@@ -1,4 +1,4 @@
-# 📦 spm — Skills Package Manager
+# 📦 spm — Skill and Plugin Manager
 
 **spm** is a package manager for AI agent *skills*. It installs reusable skills from Git-based catalogs into every coding agent on your machine — one `spm install`, and the skill lands wherever your agents look for it:
 
