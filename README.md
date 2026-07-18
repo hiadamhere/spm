@@ -146,21 +146,11 @@ An update **refreshes only the deployments that still exist**, reproducing the e
 
 If you've **manually deleted** a skill's files, update won't silently restore them — it marks the skill *lost* and leaves it alone. `spm resurrect` lists lost skills and lets you **restore** (reinstall where they were) or **forget** them. So: *update keeps things current; resurrect brings back what you removed.*
 
-## MCP server
+## MCP server (experimental)
 
-spm is also an MCP server — AI agents can browse catalogs and install skills themselves:
+spm ships an MCP stdio server (`spm mcp serve`) so AI agents will be able to browse catalogs and install skills themselves. The server starts and completes the MCP handshake today; tool discovery is still being stabilized and lands in an upcoming release — until then, treat the MCP surface as a preview.
 
-```bash
-spm mcp serve
-```
-
-Example client configuration (Claude Code):
-
-```bash
-claude mcp add spm -- spm mcp serve
-```
-
-Read-only commands (`list`, `catalog list`) are annotated as safe; destructive ones (`uninstall`, `catalog remove`) carry MCP destructive hints so agents ask before running them.
+Read-only commands (`list`, `catalog list`) are annotated as safe; destructive ones (`uninstall`, `catalog remove`) carry MCP destructive hints, so agents will ask before running them.
 
 ## Known limitations
 
