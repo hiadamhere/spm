@@ -11,7 +11,6 @@
 | **Cline** | `.clinerules/<skill>.md` | `~/Documents/Cline/Rules/<skill>.md` |
 | **Devin** | `.devin/skills/<skill>/` | `%APPDATA%/devin/skills/` (or `~/.config/devin/skills/`) |
 | **Aider** | `.aider/skills/` + `.aider.conf.yml` | `~/.aider/skills/` + `~/.aider.conf.yml` |
-| **Open Interpreter** | — | `~/.interpreter/skills/<skill>.md` |
 
 Global deployments only target agents that are actually installed on your system.
 
@@ -156,7 +155,7 @@ Read-only commands (`list`, `catalog list`) are annotated as safe; destructive o
 
 - Skill versioning uses the catalog's HEAD commit, so any commit to a catalog marks all of its skills as outdated (updates are cheap re-installs).
 - A skill's install state is tracked once per skill name, not per project — installing the same skill into several projects tracks only the most recent project path.
-- Aider and Open Interpreter receive only the skill's `SKILL.md` content (their formats have no folder concept); reference files are not deployed there. Claude Code, Antigravity/Gemini, Codex, and Devin get the full skill folder.
+- Aider receives only the skill's `SKILL.md` content (its format has no folder concept); reference files are not deployed there. Claude Code, Antigravity/Gemini, Codex, and Devin get the full skill folder.
 
 ## Built with
 
