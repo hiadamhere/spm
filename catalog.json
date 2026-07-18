@@ -1,0 +1,27 @@
+{
+  "name": "spm featured",
+  "description": "A curated index of agent-skill repositories, importable with `spm catalog import`.",
+  "repos": [
+    {
+      "url": "https://github.com/anthropics/skills",
+      "name": "anthropic",
+      "description": "Anthropic's official Agent Skills: document tools (pdf, docx, pptx, xlsx), MCP builder, web app testing, frontend and canvas design, and more."
+    },
+    {
+      "url": "https://github.com/openai/skills",
+      "path": "skills/.curated",
+      "name": "openai",
+      "description": "OpenAI's curated Codex skills: Playwright, Figma, security reviews, deploys (Vercel, Netlify, Cloudflare, Render), ASP.NET Core, WinUI, and more."
+    },
+    {
+      "url": "https://github.com/unoplatform/studio",
+      "name": "uno-platform",
+      "description": "Uno Platform skills for building cross-platform C#/XAML apps: MVUX, navigation, toolkit controls, and theming."
+    },
+    {
+      "url": "https://github.com/hiadamhere/skills",
+      "name": "msaf",
+      "description": "Microsoft Agent Framework (MAF/MSAF) architecture and API guidance: the msaf-architect skill."
+    }
+  ]
+}
