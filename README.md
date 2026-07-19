@@ -11,8 +11,18 @@
 | **Cline** | `.clinerules/<skill>.md` | `~/Documents/Cline/Rules/<skill>.md` |
 | **Devin** | `.devin/skills/<skill>/` | `%APPDATA%/devin/skills/` (or `~/.config/devin/skills/`) |
 | **Aider** | `.aider/skills/` + `.aider.conf.yml` | `~/.aider/skills/` + `~/.aider.conf.yml` |
+| **GitHub Copilot** | `.github/instructions/<skill>.instructions.md` | — |
+| **Hermes** | `skills/<skill>/` | `~/.hermes/skills/<skill>/` |
+| **OpenClaw** | `.agents/skills/<skill>/` | `~/.openclaw/skills/<skill>/` |
+| **opencode** | `.opencode/skills/<skill>/` | `~/.config/opencode/skills/<skill>/` |
+| **Sourcegraph Amp** | `.agents/skills/<skill>/` | `~/.config/amp/skills/<skill>/` |
+| **Pi** | `.agents/skills/<skill>/` | — |
 
-Global deployments only target agents that are actually installed on your system.
+Global deployments only target agents that are actually installed on your system. Many agents read the
+shared `.agents/skills/` convention, so one install often reaches several at once.
+
+By default a skill installs to **every detected agent** — use the interactive checklist or the
+`--agents` flag to pick a subset. See [Choosing which agents](#choosing-which-agents).
 
 ## Install
 
@@ -50,6 +60,28 @@ spm catalog sync
 ```
 
 Run `spm` with no arguments for an interactive REPL.
+
+## Choosing which agents
+
+By default `spm install` deploys to **every AI agent detected on your machine**. You control which ones:
+
+- **On a terminal**, install shows a checklist — Claude Code, Antigravity/Gemini, and OpenAI Codex are
+  pre-checked; the rest are listed unchecked (space to toggle, enter to confirm).
+- **Non-interactively / in scripts**, pass `--agents` with a comma-separated list of keys:
+
+  ```bash
+  spm install pdf --agents claude,cursor          # only these two
+  spm install pdf --agents copilot                # just GitHub Copilot
+  ```
+
+Valid agent keys:
+
+`claude` · `gemini` (alias `antigravity`) · `codex` · `cursor` · `cline` · `devin` · `aider` ·
+`copilot` · `hermes` · `openclaw` · `opencode` · `amp` · `pi`
+
+Combine with the scope flags below (`--project` / `--global` / `--all`) to control *where* as well as
+*which*. Agents that write the same folder (e.g. Codex, OpenClaw, Amp and Pi all read `.agents/skills/`)
+are offered as a single choice.
 
 ## install vs catalog — which do I use?
 
@@ -127,8 +159,8 @@ Each entry needs a `url`; optional `path` overrides that repo's skills folder (i
 
 - Inside a project (a folder with `.git` or `package.json`), `spm install <skill>` deploys to **project-local** agent folders.
 - Outside a project, it deploys **globally** for every detected agent.
-- `--global` forces global-only; `--all` does both.
-- On a terminal, `spm install` also asks **which agents** should receive the skill — Claude Code, Antigravity/Gemini, and OpenAI Codex are pre-checked; the rest are listed unchecked (space to toggle). Skip the prompt with `--agents claude,cursor,codex`. (Codex reads folder skills from `.agents/skills/`, the same folder Antigravity uses.)
+- `--project` forces project-only; `--global` forces global-only; `--all` does both.
+- To pick *which agents* receive the skill, see [Choosing which agents](#choosing-which-agents) above.
 - `spm uninstall <skill>` removes only that skill's files/sections, using the same scope rules. Run `spm uninstall` with **no name** to pick a scope and then multi-select which installed skills to remove.
 
 ## Updates
