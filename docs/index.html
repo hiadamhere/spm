@@ -84,9 +84,15 @@
         <tr><td><strong>Cline</strong></td><td><code>.clinerules/</code></td><td><code>~/Documents/Cline/Rules/</code></td></tr>
         <tr><td><strong>Devin</strong></td><td><code>.devin/skills/</code></td><td><code>%APPDATA%/devin/skills/</code></td></tr>
         <tr><td><strong>Aider</strong></td><td><code>.aider/skills/</code></td><td><code>~/.aider/skills/</code></td></tr>
+        <tr><td><strong>GitHub Copilot</strong></td><td><code>.github/instructions/&lt;skill&gt;.instructions.md</code></td><td>—</td></tr>
+        <tr><td><strong>Hermes</strong></td><td><code>skills/</code></td><td><code>~/.hermes/skills/</code></td></tr>
+        <tr><td><strong>OpenClaw</strong></td><td><code>.agents/skills/</code></td><td><code>~/.openclaw/skills/</code></td></tr>
+        <tr><td><strong>opencode</strong></td><td><code>.opencode/skills/</code></td><td><code>~/.config/opencode/skills/</code></td></tr>
+        <tr><td><strong>Sourcegraph Amp</strong></td><td><code>.agents/skills/</code></td><td><code>~/.config/amp/skills/</code></td></tr>
+        <tr><td><strong>Pi</strong></td><td><code>.agents/skills/</code></td><td>—</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:14px">Global deployments only target agents actually installed on your system.</p>
+    <p class="note" style="margin-top:14px">Global deployments only target agents actually installed on your system. Many agents read the shared <code>.agents/skills/</code> convention, so one install often reaches several at once. Pick specific agents on the interactive checklist, or non-interactively with <code>--agents claude,cursor,copilot</code>.</p>
   </div>
 </section>
 
