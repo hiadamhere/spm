@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>spm — Skill and Plugin Manager</title>
+<meta name="description" content="spm installs reusable AI-agent skills from Git catalogs into every coding agent on your machine — Claude Code, Codex, Antigravity, Cursor, Cline, Devin, Aider — with one command." />
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --border:#26303c; --fg:#e6edf3;
+    --muted:#9aa7b4; --accent:#4dabf7; --accent2:#63e6be; --code:#0b0f14;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  code,pre{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
+  code{background:var(--code);padding:.15em .4em;border-radius:5px;font-size:.9em}
+  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
+    padding:16px 18px;overflow:auto;font-size:.9em}
+  pre code{background:none;padding:0}
+  header.hero{padding:72px 0 40px;text-align:center;border-bottom:1px solid var(--border)}
+  .logo{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;margin:0}
+  .logo .pkg{opacity:.9}
+  .tag{color:var(--muted);font-size:1.15rem;max-width:640px;margin:14px auto 0}
+  .cta{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--border);
+    background:var(--panel);color:var(--fg);font-weight:600}
+  .btn.primary{background:var(--accent);color:#08131f;border-color:transparent}
+  .install{max-width:520px;margin:26px auto 0}
+  .install pre{text-align:left}
+  section{padding:44px 0;border-bottom:1px solid var(--border)}
+  h2{font-size:1.5rem;margin:0 0 8px;letter-spacing:-.01em}
+  .lead{color:var(--muted);margin:0 0 22px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--muted);font-weight:600}
+  td code{white-space:nowrap}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+  .card h3{margin:.1em 0 .3em;font-size:1.08rem}
+  .card p{color:var(--muted);margin:.2em 0 12px}
+  .note{color:var(--muted);font-size:.9rem}
+  .pill{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.03em;
+    text-transform:uppercase;color:var(--accent2);border:1px solid var(--border);
+    border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+  footer{padding:34px 0 60px;color:var(--muted);text-align:center;font-size:.9rem}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1 class="logo"><span class="pkg">📦</span> spm</h1>
+    <p class="tag">A package manager for AI-agent <strong>skills</strong>. Install a skill once, and it lands wherever every coding agent on your machine looks for it.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.nuget.org/packages/spm">Get spm</a>
+      <a class="btn" href="https://github.com/hiadamhere/spm">GitHub</a>
+      <a class="btn" href="https://github.com/hiadamhere/spm#readme">Docs</a>
+    </div>
+    <div class="install">
+      <pre><code>dotnet tool install -g spm</code></pre>
+      <p class="note">Requires the <a href="https://dotnet.microsoft.com/download">.NET 10 SDK or runtime</a>. Then run <code>spm --help</code> or just <code>spm</code> for an interactive REPL. Standalone, no-.NET binaries are on the roadmap.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>One install, every agent</h2>
+    <p class="lead">A skill deploys to whichever agents are present — at project or global scope.</p>
+    <table>
+      <thead><tr><th>Agent</th><th>Project scope</th><th>Global scope</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Claude Code</strong></td><td><code>.claude/skills/</code></td><td><code>~/.claude/skills/</code></td></tr>
+        <tr><td><strong>Google Antigravity</strong></td><td><code>.agents/skills/</code></td><td><code>~/.gemini/config/skills/</code>, <code>~/.gemini/antigravity-cli/skills/</code></td></tr>
+        <tr><td><strong>OpenAI Codex CLI</strong></td><td><code>.agents/skills/</code></td><td><code>~/.agents/skills/</code></td></tr>
+        <tr><td><strong>Cursor</strong></td><td><code>.cursor/rules/&lt;skill&gt;.mdc</code></td><td>—</td></tr>
+        <tr><td><strong>Cline</strong></td><td><code>.clinerules/</code></td><td><code>~/Documents/Cline/Rules/</code></td></tr>
+        <tr><td><strong>Devin</strong></td><td><code>.devin/skills/</code></td><td><code>%APPDATA%/devin/skills/</code></td></tr>
+        <tr><td><strong>Aider</strong></td><td><code>.aider/skills/</code></td><td><code>~/.aider/skills/</code></td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:14px">Global deployments only target agents actually installed on your system.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Two ways to get skills</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Install one now</h3>
+        <p>Point spm at any GitHub repo with skills. It shallow-clones to a temp folder, deploys, and discards the clone — no subscription, no clutter.</p>
+        <pre><code>spm install anthropics/skills
+spm install anthropics/skills/pdf</code></pre>
+      </div>
+      <div class="card">
+        <h3>Subscribe to a library</h3>
+        <p>Add a repo as a <em>catalog</em> to reuse its skills by bare name — they show up in <code>list</code> and <code>search</code>.</p>
+        <pre><code>spm catalog add mine you/skills
+spm catalog sync
+spm install some-skill</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Start from the featured catalog</h2>
+    <p class="lead">One command subscribes to a curated index of skill repositories.</p>
+    <pre><code>spm catalog import   # spm's official featured index
+spm catalog sync
+spm list</code></pre>
+    <p class="note">The featured index lives at
+      <a href="https://github.com/hiadamhere/spm/blob/main/catalog.json"><code>catalog.json</code></a>
+      in this repo.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>MCP server <span class="pill">experimental</span></h2>
+    <p class="lead">spm can run as a Model Context Protocol server so an agent can drive it directly.</p>
+    <pre><code>spm mcp serve</code></pre>
+    <p class="note">Tool discovery is still being hardened — see the repo for current status.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>spm — Skill and Plugin Manager · <a href="https://github.com/hiadamhere/spm">source &amp; docs</a> · MIT licensed</p>
+  </div>
+</footer>
+</body>
+</html>
