@@ -26,11 +26,24 @@ By default a skill installs to **every detected agent** — use the interactive 
 
 ## Install
 
+**npm** — no .NET required:
+
+```bash
+npm install -g @hiadamhere/spm
+# or run it without installing:
+npx @hiadamhere/spm --help
+```
+
+**Standalone binary** — download the self-contained executable for your platform from the
+[latest release](https://github.com/hiadamhere/spm/releases/latest) (also no .NET required).
+
+**.NET tool** — for .NET users (requires the [.NET 10 SDK or runtime](https://dotnet.microsoft.com/download)):
+
 ```bash
 dotnet tool install -g spm
 ```
 
-Requires the [.NET 10 SDK or runtime](https://dotnet.microsoft.com/download). Verify with `spm --help`.
+Verify any of them with `spm --help`, or run `spm` with no arguments for an interactive REPL.
 
 ## Two ways to get skills
 
