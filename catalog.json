@@ -22,6 +22,32 @@
       "url": "https://github.com/hiadamhere/skills",
       "name": "msaf",
       "description": "Microsoft Agent Framework (MAF/MSAF) architecture and API guidance: the msaf-architect skill."
+    },
+    {
+      "url": "https://github.com/vercel-labs/agent-skills",
+      "name": "vercel",
+      "description": "Vercel's official skills: deploy to Vercel, the Vercel CLI with tokens, performance optimization, React best practices, React Native, view transitions, and web design/writing guidelines."
+    },
+    {
+      "url": "https://github.com/cloudflare/skills",
+      "name": "cloudflare",
+      "description": "Cloudflare's official skills for the developer platform: Workers, Pages, storage (KV/D1/R2), Agents SDK, Durable Objects, Sandbox SDK, Turnstile, Cloudflare One, and Terraform/Pulumi IaC."
+    },
+    {
+      "url": "https://github.com/huggingface/skills",
+      "name": "huggingface",
+      "description": "Hugging Face's official skills for the ML ecosystem: the hf CLI, model and dataset workflows, inference serving, and cloud/SageMaker deployment."
+    },
+    {
+      "url": "https://github.com/stripe/ai",
+      "path": "providers/claude/plugin/skills",
+      "name": "stripe",
+      "description": "Stripe's official skills: integration best practices, docs lookup, project setup, Connect recommendations, and Stripe SDK upgrades."
+    },
+    {
+      "url": "https://github.com/google-labs-code/jules-skills",
+      "name": "google-jules",
+      "description": "Google Labs skills for the Jules coding agent: automate GitHub issues and verify local actions."
     }
   ]
 }
