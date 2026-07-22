@@ -132,10 +132,10 @@ spm list</code></pre>
 
 <section>
   <div class="wrap">
-    <h2>MCP server <span class="pill">experimental</span></h2>
-    <p class="lead">spm can run as a Model Context Protocol server so an agent can drive it directly.</p>
+    <h2>MCP server</h2>
+    <p class="lead">spm runs as a Model Context Protocol server so an agent can find and install skills itself — no hand-wiring.</p>
     <pre><code>spm mcp serve</code></pre>
-    <p class="note">Tool discovery is still being hardened — see the repo for current status.</p>
+    <p class="note">Point any MCP client at it: spm exposes <code>search</code>, <code>list</code>, <code>info</code>, <code>install</code>, and the <code>catalog_*</code> commands as tools, with destructive ones flagged so agents ask first.</p>
   </div>
 </section>
 
