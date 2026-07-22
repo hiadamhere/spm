@@ -123,7 +123,7 @@ Both honor a repo's custom skills location — see [Skill layout](#skill-layout)
 ## Discovering skills
 
 - **`spm list`** shows every skill across your catalogs, grouped by catalog, one line each with its description and install status.
-- **`spm search <text>`** (alias `find`) matches your query against skill names *and* descriptions.
+- **`spm search <text>`** (alias `find`) ranks skills by relevance across names and descriptions — not just an exact substring. It's tolerant of word order, partial words/stems, and typos, so `spm search "seo website"` surfaces a skill described as *"analyze a website's SEO and ranking factors."*
 - **`spm info <skill>`** (alias `show`) prints a detail view: catalog, description, install status/scope, version, and reference-file count.
 
 Descriptions are read from each skill's `SKILL.md` YAML frontmatter (`description:`).
@@ -211,9 +211,8 @@ Read-only tools (`list`, `catalog list`, `search`, `info`) are annotated as safe
 
 ## Known limitations
 
-- Skill versioning uses the catalog's HEAD commit, so any commit to a catalog marks all of its skills as outdated (updates are cheap re-installs).
 - A skill's install state is tracked once per skill name, not per project — installing the same skill into several projects tracks only the most recent project path.
-- Aider receives only the skill's `SKILL.md` content (its format has no folder concept); reference files are not deployed there. Claude Code, Antigravity/Gemini, Codex, and Devin get the full skill folder.
+- The single-file agents get just the skill's text, not its folder, so bundled reference files aren't deployed there: Aider (`SKILL.md` content), Cursor (`.mdc` rule), Cline (rule file), and GitHub Copilot (instruction file). The folder-based agents — Claude Code, Antigravity/Gemini, Codex, Devin, Hermes, OpenClaw, opencode, Amp, and Pi — get the full skill folder.
 
 ## Built with
 
