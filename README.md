@@ -34,6 +34,19 @@ npm install -g @hiadamhere/spm
 npx @hiadamhere/spm --help
 ```
 
+**Homebrew** (macOS / Linux):
+
+```bash
+brew install hiadamhere/spm/spm
+```
+
+**Scoop** (Windows):
+
+```bash
+scoop bucket add spm https://github.com/hiadamhere/scoop-spm
+scoop install spm
+```
+
 **Standalone binary** — download the self-contained executable for your platform from the
 [latest release](https://github.com/hiadamhere/spm/releases/latest) (also no .NET required).
 
