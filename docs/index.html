@@ -121,10 +121,37 @@ spm list</code></pre>
 
 <section>
   <div class="wrap">
+    <h2>Teach your agents spm</h2>
+    <p class="lead">spm ships its own skill, so your agents search and install skills for you instead of you doing it by hand.</p>
+    <pre><code>spm install spm --global</code></pre>
+    <p class="note">The skill covers when to reach for spm, every command, and whether to use the CLI or spm's MCP tools.
+      With it loaded, an agent that hits &ldquo;is there a skill for X?&rdquo; runs <code>spm search</code>, shows you the
+      candidates, and installs the one you pick. The featured catalog provides it, and the first interactive launch
+      offers to install it for you.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Keep deployments healthy</h2>
+    <p class="lead">Skills spread across many folders, so spm can explain what it finds and tidy up — conservatively.</p>
+    <pre><code>spm doctor            # read-only diagnosis
+spm cleanup           # preview the fixes
+spm cleanup --apply   # perform them</code></pre>
+    <p class="note"><code>doctor</code> reports skills whose files went missing, agents left without a copy, broken links,
+      layouts from older spm versions, and stale clones or leftovers. <code>cleanup</code> only touches what spm can prove
+      it owns: folders it removes go to a quarantine directory first, and anything untracked is reported and left alone.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>MCP server</h2>
     <p class="lead">spm runs as a Model Context Protocol server so an agent can find and install skills itself — no hand-wiring.</p>
     <pre><code>spm mcp serve</code></pre>
-    <p class="note">Point any MCP client at it: spm exposes <code>search</code>, <code>list</code>, <code>info</code>, <code>install</code>, and the <code>catalog_*</code> commands as tools, with destructive ones flagged so agents ask first.</p>
+    <p class="note">Point any MCP client at it: spm exposes <code>search</code>, <code>list</code>, <code>info</code>, <code>install</code>,
+      <code>agents</code>, <code>doctor</code> and the <code>catalog_*</code> commands as tools. Read-only ones are annotated safe;
+      destructive ones such as <code>uninstall</code> and <code>cleanup</code> are flagged so agents ask first.</p>
   </div>
 </section>
 
