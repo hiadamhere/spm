@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>spm — Skill and Plugin Manager</title>
-<meta name="description" content="spm installs reusable AI-agent skills from Git catalogs into every coding agent on your machine — Claude Code, Codex, Cursor, Copilot, Antigravity, Cline, Devin, Aider, and more (13 agents) — with one command." />
+<meta name="description" content="spm installs reusable AI-agent skills from Git catalogs into every coding agent on your machine, with one command." />
 <style>
   :root{
     --bg:#0d1117; --panel:#161b22; --border:#26303c; --fg:#e6edf3;
@@ -73,26 +73,15 @@
 <section>
   <div class="wrap">
     <h2>One install, every agent</h2>
-    <p class="lead">A skill deploys to whichever agents are present — at project or global scope.</p>
+    <p class="lead">Every agent that follows the open agent-skills conventions, installed the same way: one shared copy, links everywhere else.</p>
     <table>
-      <thead><tr><th>Agent</th><th>Project scope</th><th>Global scope</th></tr></thead>
+      <thead><tr><th>Where the skill lands</th><th>Project scope</th><th>Global scope</th></tr></thead>
       <tbody>
-        <tr><td><strong>Claude Code</strong></td><td><code>.claude/skills/</code></td><td><code>~/.claude/skills/</code></td></tr>
-        <tr><td><strong>Google Antigravity</strong></td><td><code>.agents/skills/</code></td><td><code>~/.gemini/config/skills/</code>, <code>~/.gemini/antigravity-cli/skills/</code></td></tr>
-        <tr><td><strong>OpenAI Codex CLI</strong></td><td><code>.agents/skills/</code></td><td><code>~/.agents/skills/</code></td></tr>
-        <tr><td><strong>Cursor</strong></td><td><code>.cursor/rules/&lt;skill&gt;.mdc</code></td><td>—</td></tr>
-        <tr><td><strong>Cline</strong></td><td><code>.clinerules/</code></td><td><code>~/Documents/Cline/Rules/</code></td></tr>
-        <tr><td><strong>Devin</strong></td><td><code>.devin/skills/</code></td><td><code>%APPDATA%/devin/skills/</code></td></tr>
-        <tr><td><strong>Aider</strong></td><td><code>.aider/skills/</code></td><td><code>~/.aider/skills/</code></td></tr>
-        <tr><td><strong>GitHub Copilot</strong></td><td><code>.github/instructions/&lt;skill&gt;.instructions.md</code></td><td>—</td></tr>
-        <tr><td><strong>Hermes</strong></td><td><code>skills/</code></td><td><code>~/.hermes/skills/</code></td></tr>
-        <tr><td><strong>OpenClaw</strong></td><td><code>.agents/skills/</code></td><td><code>~/.openclaw/skills/</code></td></tr>
-        <tr><td><strong>opencode</strong></td><td><code>.opencode/skills/</code></td><td><code>~/.config/opencode/skills/</code></td></tr>
-        <tr><td><strong>Sourcegraph Amp</strong></td><td><code>.agents/skills/</code></td><td><code>~/.config/amp/skills/</code></td></tr>
-        <tr><td><strong>Pi</strong></td><td><code>.agents/skills/</code></td><td>—</td></tr>
+        <tr><td><strong>Shared copy</strong> — read directly by every agent that follows the <code>.agents/skills</code> convention</td><td><code>.agents/skills/</code></td><td><code>~/.agents/skills/</code></td></tr>
+        <tr><td><strong>Every other selected agent</strong> — a link to the shared copy (junction on Windows, no admin; a copy if linking fails)</td><td>the agent's own <code>skills/</code> folder in the project</td><td>the agent's own user-level <code>skills/</code> folder</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:14px">Global deployments only target agents actually installed on your system. Many agents read the shared <code>.agents/skills/</code> convention, so one install often reaches several at once. Pick specific agents on the interactive checklist, or non-interactively with <code>--agents claude,cursor,copilot</code>.</p>
+    <p class="note" style="margin-top:14px">The full list — keys, folders, which agents read the shared copy — is in <a href="https://github.com/hiadamhere/spm/blob/main/docs/agents.md">docs/agents.md</a>, or run <code>spm agents</code> to see it with detection status. Detected agents are pre-checked on the interactive checklist; pick a set non-interactively with <code>--agents key1,key2</code>.</p>
   </div>
 </section>
 

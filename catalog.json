@@ -48,6 +48,11 @@
       "url": "https://github.com/google-labs-code/jules-skills",
       "name": "google-jules",
       "description": "Google Labs skills for the Jules coding agent: automate GitHub issues and verify local actions."
+    },
+    {
+      "url": "https://github.com/hiadamhere/spm",
+      "name": "spm",
+      "description": "spm's own skill: teaches agents to find, install, update, and tidy skills with spm — CLI or MCP."
     }
   ]
 }
