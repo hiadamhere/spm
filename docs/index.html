@@ -1,66 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#f8f7f2" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#1c201c" media="(prefers-color-scheme: dark)" />
+<script>
+  // Restore an explicit choice before styles paint. System is the default.
+  try {
+    const theme = localStorage.getItem("portfolio-theme");
+    if (theme === "light" || theme === "dark") {
+      document.documentElement.dataset.theme = theme;
+      document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+        meta.content = theme === "dark" ? "#1c201c" : "#f8f7f2";
+      });
+    }
+  } catch {}
+</script>
 <title>spm — Skill and Plugin Manager</title>
-<meta name="description" content="spm installs reusable AI-agent skills from Git catalogs into every coding agent on your machine, with one command." />
-<style>
-  :root{
-    --bg:#0d1117; --panel:#161b22; --border:#26303c; --fg:#e6edf3;
-    --muted:#9aa7b4; --accent:#4dabf7; --accent2:#63e6be; --code:#0b0f14;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--fg);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
-  code,pre{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
-  code{background:var(--code);padding:.15em .4em;border-radius:5px;font-size:.9em}
-  pre{background:var(--code);border:1px solid var(--border);border-radius:10px;
-    padding:16px 18px;overflow:auto;font-size:.9em}
-  pre code{background:none;padding:0}
-  header.hero{padding:72px 0 40px;text-align:center;border-bottom:1px solid var(--border)}
-  .logo{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;margin:0}
-  .logo .pkg{opacity:.9}
-  .tag{color:var(--muted);font-size:1.15rem;max-width:640px;margin:14px auto 0}
-  .cta{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--border);
-    background:var(--panel);color:var(--fg);font-weight:600}
-  .btn.primary{background:var(--accent);color:#08131f;border-color:transparent}
-  .install{max-width:520px;margin:26px auto 0}
-  .install pre{text-align:left}
-  section{padding:44px 0;border-bottom:1px solid var(--border)}
-  h2{font-size:1.5rem;margin:0 0 8px;letter-spacing:-.01em}
-  .lead{color:var(--muted);margin:0 0 22px}
-  table{width:100%;border-collapse:collapse;font-size:.92rem}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
-  th{color:var(--muted);font-weight:600}
-  td code{white-space:nowrap}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  @media(max-width:680px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
-  .card h3{margin:.1em 0 .3em;font-size:1.08rem}
-  .card p{color:var(--muted);margin:.2em 0 12px}
-  .note{color:var(--muted);font-size:.9rem}
-  .pill{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.03em;
-    text-transform:uppercase;color:var(--accent2);border:1px solid var(--border);
-    border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
-  footer{padding:34px 0 60px;color:var(--muted);text-align:center;font-size:.9rem}
-  footer a{color:var(--muted)}
-</style>
+<meta name="description" content="spm installs reusable AI-agent skills from Git catalogs into every coding agent on your machine, with one command. Teams publish a shared catalog so every developer installs the same skills." />
+<meta property="og:title" content="spm — Skill and Plugin Manager" />
+<meta property="og:description" content="Install an AI-agent skill once, and it lands wherever every coding agent on your machine looks for it — and share a team catalog so everyone works from the same set." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hiadamhere.github.io/spm/" />
+<link rel="canonical" href="https://hiadamhere.github.io/spm/" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preload" href="assets/fonts/dm-sans-regular.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="assets/fonts/dm-sans-bold.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="stylesheet" href="site-theme.css" />
+<script src="theme.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="svg-defs" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <symbol id="github" viewBox="0 0 24 24">
+      <path fill="currentColor" stroke="none" d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.64-1.25-1.64-1.02-.7.08-.68.08-.68 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.23 3.28.94.1-.73.39-1.23.71-1.51-2.5-.28-5.13-1.25-5.13-5.57 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.09-1.15 3.09-1.15.62 1.55.23 2.69.11 2.98.73.79 1.16 1.79 1.16 3.02 0 4.33-2.63 5.28-5.14 5.56.41.35.77 1.03.77 2.08v3.09c0 .3.2.65.77.54A11.25 11.25 0 0 0 12 .75Z" />
+    </symbol>
+  </defs>
+</svg>
+
+<nav class="site-nav wrap" aria-label="Site navigation">
+  <div class="site-links">
+    <a class="portfolio-link" href="https://hiadamhere.github.io/"><span class="portfolio-mark" aria-hidden="true">✳</span>Open-source developer tools <span aria-hidden="true">↗</span></a>
+    <a href="https://hiadamhere.github.io/skills/">Skills catalog <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="theme-picker" role="group" aria-label="Color theme" hidden>
+    <button type="button" data-theme-choice="system" aria-label="Use system theme" aria-pressed="true" title="System theme">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2" /><path d="M8 21h8m-4-4v4" /></svg>
+    </button>
+    <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="false" title="Light theme">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
+    </button>
+    <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false" title="Dark theme">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.3A9 9 0 0 1 9.7 3.5a9 9 0 1 0 10.8 10.8Z" /></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="main">
 <header class="hero">
   <div class="wrap">
-    <h1 class="logo"><span class="pkg">📦</span> spm</h1>
-    <p class="tag">A package manager for AI-agent <strong>skills</strong>. Install a skill once, and it lands wherever every coding agent on your machine looks for it.</p>
+    <h1>spm<span class="heading-dot">.</span> <em>skill and plugin manager</em></h1>
+    <p class="intro">A package manager for AI-agent <strong>skills</strong>. Install a skill once, and it lands wherever every coding agent on your machine looks for it. Teams <a href="#catalogs">publish their own catalog</a> so everyone works from the same set.</p>
     <div class="cta">
       <a class="btn primary" href="https://www.npmjs.com/package/@hiadamhere/spm">Get spm</a>
-      <a class="btn" href="https://github.com/hiadamhere/spm">GitHub</a>
+      <a class="btn" href="https://github.com/hiadamhere/spm"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#github" /></svg>GitHub</a>
       <a class="btn" href="https://github.com/hiadamhere/spm#readme">Docs</a>
     </div>
     <div class="install">
@@ -72,8 +78,10 @@
 
 <section>
   <div class="wrap">
-    <h2>One install, every agent</h2>
+    <p class="eyebrow">Coverage</p>
+    <h2>One install, <em>every agent</em></h2>
     <p class="lead">Every agent that follows the open agent-skills conventions, installed the same way: one shared copy, links everywhere else.</p>
+    <div class="table-card">
     <table>
       <thead><tr><th>Where the skill lands</th><th>Project scope</th><th>Global scope</th></tr></thead>
       <tbody>
@@ -81,21 +89,25 @@
         <tr><td><strong>Every other selected agent</strong> — a link to the shared copy (junction on Windows, no admin; a copy if linking fails)</td><td>the agent's own <code>skills/</code> folder in the project</td><td>the agent's own user-level <code>skills/</code> folder</td></tr>
       </tbody>
     </table>
-    <p class="note" style="margin-top:14px">The full list — keys, folders, which agents read the shared copy — is in <a href="https://github.com/hiadamhere/spm/blob/main/docs/agents.md">docs/agents.md</a>, or run <code>spm agents</code> to see it with detection status. Detected agents are pre-checked on the interactive checklist; pick a set non-interactively with <code>--agents key1,key2</code>.</p>
+    </div>
+    <p class="note">The full list — keys, folders, which agents read the shared copy — is in <a href="https://github.com/hiadamhere/spm/blob/main/docs/agents.md">docs/agents.md</a>, or run <code>spm agents</code> to see it with detection status. Detected agents are pre-checked on the interactive checklist; pick a set non-interactively with <code>--agents key1,key2</code>.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Two ways to get skills</h2>
+    <p class="eyebrow">Workflow</p>
+    <h2>Two ways to <em>get skills</em></h2>
     <div class="grid">
-      <div class="card">
+      <div class="card peach">
+        <p class="eyebrow">One-off</p>
         <h3>Install one now</h3>
         <p>Point spm at any GitHub repo with skills. It shallow-clones to a temp folder, deploys, and discards the clone — no subscription, no clutter.</p>
         <pre><code>spm install anthropics/skills
 spm install anthropics/skills/pdf</code></pre>
       </div>
-      <div class="card">
+      <div class="card sage">
+        <p class="eyebrow">Ongoing</p>
         <h3>Subscribe to a library</h3>
         <p>Add a repo as a <em>catalog</em> to reuse its skills by bare name — they show up in <code>list</code>, and <code>search</code> ranks them by intent (word-order-, stem-, and typo-tolerant).</p>
         <pre><code>spm catalog add mine you/skills
@@ -106,24 +118,37 @@ spm install some-skill</code></pre>
   </div>
 </section>
 
-<section>
+<section id="catalogs">
   <div class="wrap">
-    <h2>Start from the featured catalog</h2>
-    <p class="lead">One command subscribes to a curated index of skill repositories.</p>
-    <pre><code>spm catalog import   # spm's official featured index
+    <p class="eyebrow">Getting started</p>
+    <h2>Start from a <em>catalog</em></h2>
+    <p class="lead">A catalog is a <code>catalog.json</code> index of skill repositories. Import one, and every repo it lists becomes a subscription.</p>
+    <div class="grid">
+      <div class="card sand">
+        <p class="eyebrow">Curated</p>
+        <h3>The featured index</h3>
+        <p>One command subscribes to spm's curated list of public skill repositories. The index lives as <a href="https://github.com/hiadamhere/spm/blob/main/catalog.json"><code>catalog.json</code></a> in the spm repo, so it updates without a new release.</p>
+        <pre><code>spm catalog import
 spm catalog sync
 spm list</code></pre>
-    <p class="note">The featured index lives at
-      <a href="https://github.com/hiadamhere/spm/blob/main/catalog.json"><code>catalog.json</code></a>
-      in this repo.</p>
+      </div>
+      <div class="card blue">
+        <p class="eyebrow">For teams</p>
+        <h3>Your own catalog</h3>
+        <p>Write your own <code>catalog.json</code> listing your team's skill repos — private ones included — and host it anywhere your developers can reach. One import line in the onboarding doc, and everyone shares the same skills. Give it a lower priority number than the featured index and your version of a skill name wins.</p>
+        <pre><code>spm catalog import https://intra/catalog.json
+spm catalog add platform you/agent-skills --priority 10</code></pre>
+      </div>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Teach your agents spm</h2>
+    <p class="eyebrow">Hands-off</p>
+    <h2>Teach your agents <em>spm</em></h2>
     <p class="lead">spm ships its own skill, so your agents search and install skills for you instead of you doing it by hand.</p>
-    <pre><code>spm install spm --global</code></pre>
+    <pre class="install"><code>spm install spm --global</code></pre>
     <p class="note">The skill covers when to reach for spm, every command, and whether to use the CLI or spm's MCP tools.
       With it loaded, an agent that hits &ldquo;is there a skill for X?&rdquo; runs <code>spm search</code>, shows you the
       candidates, and installs the one you pick. The featured catalog provides it, and the first interactive launch
@@ -133,9 +158,10 @@ spm list</code></pre>
 
 <section>
   <div class="wrap">
-    <h2>Keep deployments healthy</h2>
+    <p class="eyebrow">Maintenance</p>
+    <h2>Keep deployments <em>healthy</em></h2>
     <p class="lead">Skills spread across many folders, so spm can explain what it finds and tidy up — conservatively.</p>
-    <pre><code>spm doctor            # read-only diagnosis
+    <pre class="install"><code>spm doctor            # read-only diagnosis
 spm cleanup           # preview the fixes
 spm cleanup --apply   # perform them</code></pre>
     <p class="note"><code>doctor</code> reports skills whose files went missing, agents left without a copy, broken links,
@@ -146,19 +172,20 @@ spm cleanup --apply   # perform them</code></pre>
 
 <section>
   <div class="wrap">
-    <h2>MCP server</h2>
-    <p class="lead">spm runs as a Model Context Protocol server so an agent can find and install skills itself — no hand-wiring.</p>
-    <pre><code>spm mcp serve</code></pre>
+    <p class="eyebrow">Automation</p>
+    <h2>Run spm as an <em>MCP server</em></h2>
+    <p class="lead">An agent can find and install skills itself — no hand-wiring.</p>
+    <pre class="install"><code>spm mcp serve</code></pre>
     <p class="note">Point any MCP client at it: spm exposes <code>search</code>, <code>list</code>, <code>info</code>, <code>install</code>,
       <code>agents</code>, <code>doctor</code> and the <code>catalog_*</code> commands as tools. Read-only ones are annotated safe;
       destructive ones such as <code>uninstall</code> and <code>cleanup</code> are flagged so agents ask first.</p>
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <p>spm — Skill and Plugin Manager · <a href="https://github.com/hiadamhere/spm">source &amp; docs</a> · MIT licensed</p>
-  </div>
+</main>
+
+<footer class="site-footer wrap">
+  <p>spm — Skill and Plugin Manager · <a href="https://github.com/hiadamhere/spm">source &amp; docs</a> · MIT licensed · Part of <a href="https://hiadamhere.github.io/">Adam's tools &amp; side projects</a>.</p>
 </footer>
 </body>
 </html>
