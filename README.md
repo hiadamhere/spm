@@ -13,6 +13,11 @@ By default a skill installs to the shared `.agents/skills/` copy plus **every ag
 machine** — use the interactive checklist or the `--agents` flag to pick a different set. See
 [Choosing which agents](#choosing-which-agents).
 
+**For teams:** skills come from **catalogs** — Git repos indexed by a `catalog.json`. Publish one for your
+team (internal repos included) and a single `spm catalog import <url>` subscribes every developer to the
+same set, with your catalog taking priority over the public index. See
+[Catalog indexes](#catalog-indexes-catalogjson).
+
 ## Install
 
 **npm** — no .NET required:
@@ -166,7 +171,7 @@ spm catalog root [<path>]   # where clones are stored (or set SPM_HOME)
 - **Private repos** work through your existing git auth (SSH keys, credential manager).
 - **Clone location** defaults to `~/.spm/catalogs/`; move it per-catalog with `--local`, globally with `spm catalog root <path>`, or relocate everything with the `SPM_HOME` env var.
 
-### Featured catalog (`catalog.json`)
+### Catalog indexes (`catalog.json`)
 
 `spm catalog import` subscribes to every repo listed in a **`catalog.json`** index — spm's official one by default, or any URL / `org/repo` you pass:
 
@@ -182,6 +187,16 @@ spm catalog root [<path>]   # where clones are stored (or set SPM_HOME)
 ```
 
 Each entry needs a `url`; optional `path` overrides that repo's skills folder (if it has no `skills.json`), and optional `name`/`description` are for nicer output.
+
+**Your own catalog.** The index is just a file, so a team can publish its own: list your internal skill
+repos in a `catalog.json`, host it anywhere your developers can reach (a raw Git URL, an `org/repo`, or a
+local path), and one `spm catalog import <url>` subscribes everyone to the same set. Give a team catalog a
+lower `--priority` number than the featured index and its version of a skill name wins when both provide it.
+
+```bash
+spm catalog import https://intranet.example/catalog.json
+spm catalog add platform you/agent-skills --priority 10
+```
 
 ### Staying current without thinking about it
 
