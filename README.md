@@ -41,6 +41,12 @@ scoop bucket add spm https://github.com/hiadamhere/scoop-spm
 scoop install spm
 ```
 
+**winget** (Windows):
+
+```powershell
+winget install hiadamhere.spm
+```
+
 **Standalone binary** — download the self-contained executable for your platform from the
 [latest release](https://github.com/hiadamhere/spm/releases/latest) (also no .NET required).
 

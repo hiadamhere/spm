@@ -31,7 +31,7 @@ Prefer the **CLI** when spm tools are not available, when you need interactive p
 
 ## Registering spm with common hosts
 
-Assumes `spm` is on PATH (npm `@hiadamhere/spm`, Homebrew, Scoop, or `dotnet tool install -g spm`).
+Assumes `spm` is on PATH (npm `@hiadamhere/spm`, Homebrew, Scoop, winget, or `dotnet tool install -g spm`).
 
 **Claude Code**
 
